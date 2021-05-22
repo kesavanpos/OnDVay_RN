@@ -11,6 +11,7 @@ import Profile from './src/screens/Profile/index';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Icon } from "react-native-elements";
+import tailwind from 'tailwind-rn';
 
 const Tab = createBottomTabNavigator();
 
@@ -61,7 +62,7 @@ const App = ()  => {
         headerTitle: getFocusedRouteNameFromRoute(route),
         headerLeft: () => (
           <Icon
-        containerStyle={styles.icon}
+        containerStyle={tailwind('ml-3')}
         type="ionicon"
         onPress={() =>
                navigation.dispatch(DrawerActions.toggleDrawer())
@@ -102,7 +103,7 @@ const styles = StyleSheet.create({
   iconContainer: {
     flexDirection: "row",
     justifyContent: "space-evenly",
-    width: 60
+    width: 80
   }
 });
 

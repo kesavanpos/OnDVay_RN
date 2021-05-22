@@ -1,6 +1,7 @@
 import React from 'react';
 import {View,StyleSheet,ActivityIndicator,FlatList,TouchableOpacity,Text} from 'react-native';
 import axiosService from '../../services/index';
+import tailwind from 'tailwind-rn';
 
 const styles = StyleSheet.create({
     container: {
@@ -30,19 +31,7 @@ const HomeScreen = ({navigation }) => {
     const[dataSource,setDataSource] = React.useState([]);
     const [selectedId, setSelectedId] = React.useState(null);
 
-    const DATA = [
-        {
-          id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-          title: 'First Item',
-        },
-        {
-          id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-          title: 'Second Item',
-        },
-        {
-          id: '58694a0f-3da1-471f-bd96-145571e29d72',
-          title: 'Third Item',
-        },
+    const DATA = [        
         {
             id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
             title: 'First Item',
@@ -66,31 +55,7 @@ const HomeScreen = ({navigation }) => {
           {
             id: '58694a0f-3da1-471f-bd96-145571e29d72',
             title: 'Third Item',
-          },
-          {
-            id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-            title: 'First Item',
-          },
-          {
-            id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-            title: 'Second Item',
-          },
-          {
-            id: '58694a0f-3da1-471f-bd96-145571e29d72',
-            title: 'Third Item',
-          },
-          {
-            id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-            title: 'First Item',
-          },
-          {
-            id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-            title: 'Second Item',
-          },
-          {
-            id: '58694a0f-3da1-471f-bd96-145571e29d72',
-            title: 'Third Item',
-          },
+          }
       ];
 
     const renderItem = ({ item }) => {
@@ -103,7 +68,8 @@ const HomeScreen = ({navigation }) => {
           // FlatList Item
           <View>
             <Text
-              style={styles.item}
+              style={
+                tailwind('p-2 m-5 h-10 bg-green-200 items-center text-blue-800 content-center bg-opacity-40')}
               onPress={() => getItem(item)}>
               {item.title}
             </Text>
@@ -119,12 +85,7 @@ const HomeScreen = ({navigation }) => {
     const ItemSeparatorView = () => {
         return (
           // FlatList Item Separator
-          <View
-              style={{
-                  height: 0.5,
-                  width: '100%',
-                  backgroundColor: '#C8C8C8'
-              }}
+          <View              
           />
         );
       };
