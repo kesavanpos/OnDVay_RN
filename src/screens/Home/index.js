@@ -20,8 +20,10 @@ const styles = StyleSheet.create({
   });
 
 const Item = ({ item, onPress, style }) => (
-    <TouchableOpacity onPress={onPress} style={[styles.item, style]}>
-      <Text style={styles.title}>{item.title}</Text>
+    <TouchableOpacity onPress={getItem} style={[styles.item, style]}>
+      <Text style={
+                tailwind('p-2 m-5 h-10 bg-purple-800 text-left text-black uppercase content-center bg-opacity-40')}>
+                  {item.title}</Text>
     </TouchableOpacity>
   );
 
@@ -31,31 +33,7 @@ const HomeScreen = ({navigation }) => {
     const[dataSource,setDataSource] = React.useState([]);
     const [selectedId, setSelectedId] = React.useState(null);
 
-    const DATA = [        
-        {
-            id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-            title: 'First Item',
-          },
-          {
-            id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-            title: 'Second Item',
-          },
-          {
-            id: '58694a0f-3da1-471f-bd96-145571e29d72',
-            title: 'Third Item',
-          },
-          {
-            id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-            title: 'First Item',
-          },
-          {
-            id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-            title: 'Second Item',
-          },
-          {
-            id: '58694a0f-3da1-471f-bd96-145571e29d72',
-            title: 'Third Item',
-          }
+    let DATA = [               
       ];
 
     const renderItem = ({ item }) => {
@@ -69,17 +47,25 @@ const HomeScreen = ({navigation }) => {
           <View>
             <Text
               style={
-                tailwind('p-2 m-5 h-10 bg-green-200 items-center text-blue-800 content-center bg-opacity-40')}
+                tailwind('p-2 m-5 h-40 bg-purple-800 text-left text-black uppercase content-center bg-opacity-40')}
               onPress={() => getItem(item)}>
+              {item.body}
               {item.title}
-            </Text>
+            </Text>            
           </View>
         );
       };
     
       const getItem = (item) => {
         //Function for click on an item
-        alert('Id: ' + item.id + ' Value: ' + item.value);
+        //alert('Id: ' + item.id + ' Value: ' + item.value);
+        try{
+          //navigation.navigate('Sign In');
+        }
+        catch(e){
+          alert(e);
+        }
+        
       };
 
     const ItemSeparatorView = () => {
@@ -104,8 +90,10 @@ const HomeScreen = ({navigation }) => {
             method: 'GET'
           })
           .then(response => {
-              //console.log(response);
+            debugger;
+            console.log(response.data);
             setIsLoading(false);
+            DATA = response.data;
             setDataSource(DATA);
           })
           .catch(error => {            

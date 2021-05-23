@@ -20,9 +20,13 @@
       "supportsTablet": true
     },
     "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
+      "splash": {
+        "mdpi": "./assets/android/drawable-mdpi/icon.png",
+        "hdpi": "./assets/android/drawable-hdpi/icon.png",
+        "xhdpi": "./assets/android/drawable-xhdpi/icon.png",
+        "xxhdpi": "./assets/android/drawable-xxhdpi/icon.png",
+        "xxxhdpi": "./assets/android/drawable-xxxhdpi/icon.png",
+        "resizeMode": "cover"
       }
     },
     "web": {
